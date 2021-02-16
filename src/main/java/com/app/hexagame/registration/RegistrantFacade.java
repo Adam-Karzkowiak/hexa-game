@@ -1,14 +1,11 @@
-package com.app.hexagame.domain.registration;
+package com.app.hexagame.registration;
 
 
-import com.app.hexagame.domain.registration.dto.RegistrantWriteModel;
-import com.app.hexagame.domain.utility.IdentifierProvider;
-import com.app.hexagame.domain.utility.ValidationService;
-import org.springframework.http.ResponseEntity;
+import com.app.hexagame.registration.domain.Password;
+import com.app.hexagame.registration.domain.Registrant;
+import com.app.hexagame.registration.infrastructure.entrypoint.RegistrantWriteModel;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
 
-import java.net.URI;
 import java.time.LocalDateTime;
 
 public class RegistrantFacade {

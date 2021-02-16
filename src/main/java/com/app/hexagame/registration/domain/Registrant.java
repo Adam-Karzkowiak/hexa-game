@@ -1,10 +1,14 @@
-package com.app.hexagame.domain.registration;
+package com.app.hexagame.registration.domain;
 
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 class Registrant {
     int id;
+    @Email
+    @NotNull
     String email;
     Password password;
     LocalDateTime createdOn;

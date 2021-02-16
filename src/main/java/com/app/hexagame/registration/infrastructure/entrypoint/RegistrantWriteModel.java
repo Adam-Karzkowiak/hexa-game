@@ -1,4 +1,4 @@
-package com.app.hexagame.domain.registration.dto;
+package com.app.hexagame.registration.infrastructure.entrypoint;
 
 public class RegistrantWriteModel {
 

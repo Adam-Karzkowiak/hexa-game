@@ -1,11 +1,11 @@
-package com.app.hexagame.domain.utility;
+package com.app.hexagame.registration;
 
 public class ValidationService {
 
     public void isPasswordValid(String password) {
 
-        if (password.length() > 20 || password.length() < 8) {
-            throw new IllegalArgumentException("Password must be less than 20 and more than 8 characters in length.");
+        if (password.length() > 30 || password.length() < 8) {
+            throw new IllegalArgumentException("Password must be less than 30 and more than 8 characters in length.");
         }
         String upperCaseChars = "(.*[A-Z].*)";
         if (!password.matches(upperCaseChars)) {
