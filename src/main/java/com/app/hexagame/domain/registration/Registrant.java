@@ -3,7 +3,7 @@ package com.app.hexagame.domain.registration;
 
 import java.time.LocalDateTime;
 
-class Registration {
+class Registrant {
     int id;
     String email;
     String password;

@@ -1,6 +1,6 @@
 package com.app.hexagame.domain.registration.dto;
 
-public class RegistrationWriteModel {
+public class RegistrantWriteModel {
 
     private String email;
     private String password;
