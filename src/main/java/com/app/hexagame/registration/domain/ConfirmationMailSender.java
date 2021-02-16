@@ -1,4 +1,4 @@
 package com.app.hexagame.registration.domain;
 
-interface ConfirmationMailSender {
+public interface ConfirmationMailSender {
 }
