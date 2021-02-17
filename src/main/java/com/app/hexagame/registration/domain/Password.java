@@ -1,13 +1,16 @@
 package com.app.hexagame.registration.domain;
 
-import com.sun.istack.NotNull;
 
 
 class Password {
-    @NotNull
+
     String password;
 
-    Password(String password) {
+    private Password(String password) {
         this.password = password;
+    }
+
+    public static Password encoded(String password, DomainPasswordEncoder domainEncoder) {
+        return new Password(domainEncoder.encode(password));
     }
 }
