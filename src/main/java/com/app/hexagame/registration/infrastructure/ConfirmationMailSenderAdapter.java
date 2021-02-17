@@ -1,4 +1,6 @@
 package com.app.hexagame.registration.infrastructure;
 
-class ConfirmationMailSenderAdapter {
+import com.app.hexagame.registration.domain.ConfirmationMailSender;
+
+class ConfirmationMailSenderAdapter implements ConfirmationMailSender {
 }
