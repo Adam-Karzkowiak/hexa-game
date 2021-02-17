@@ -1,4 +1,4 @@
-package com.app.hexagame.registration;
+package com.app.hexagame.registration.domain.utility;
 
 public class ValidationService {
 
