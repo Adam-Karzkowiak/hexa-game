@@ -10,7 +10,7 @@ public class Registrant {
     Username username;
     Password password;
 
-    String getId() {
+    public String getId() {
         return id;
     }
 
