@@ -1,6 +1,7 @@
 package com.app.hexagame.registration.domain;
 
 
+import com.app.hexagame.registration.domain.utility.IdProvider;
 import com.app.hexagame.registration.infrastructure.entrypoint.RegistrantWriteModel;
 import lombok.RequiredArgsConstructor;
 
@@ -12,8 +13,8 @@ public class RegistrantFacade {
     private final DomainPasswordEncoder encoder;
 
 
-    Registrant simpleRegistration(RegistrantWriteModel writeModel, String id) {
-
+    public Registrant simpleRegistration(RegistrantWriteModel writeModel) {
+        String id = IdProvider.generateId();
         Registrant registrantBuild = Registrant.builder()
                 .id(id)
                 .email(writeModel.getEmail())

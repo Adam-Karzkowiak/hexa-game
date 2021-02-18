@@ -4,13 +4,13 @@ package com.app.hexagame.registration.domain;
 import lombok.Builder;
 
 @Builder
-class Registrant {
+public class Registrant {
     String id;
     String email;
     Username username;
     Password password;
 
-    String getId() {
+    public String getId() {
         return id;
     }
 
