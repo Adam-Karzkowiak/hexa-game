@@ -17,7 +17,7 @@ public class RegistrantFacade {
         String id = IdProvider.generateId();
         Registrant registrantBuild = Registrant.builder()
                 .id(id)
-                .email(writeModel.getEmail())
+                .email(Email.create(writeModel.getEmail()))
                 .password(Password.encoded(writeModel.getPassword(), encoder))
                 .build();
         return repository.save(registrantBuild);
