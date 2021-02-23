@@ -13,4 +13,9 @@ public class InMemoryRegistrantRepository implements RegistrantRepository {
         runtimeRepo.put(entity.getId(), entity);
         return entity;
     }
+
+    @Override
+    public Registrant findById(String id) {
+        return runtimeRepo.get(id);
+    }
 }
