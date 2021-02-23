@@ -6,7 +6,7 @@ import lombok.Builder;
 @Builder
 public class Registrant {
     String id;
-    String email;
+    Email email;
     Username username;
     Password password;
 
