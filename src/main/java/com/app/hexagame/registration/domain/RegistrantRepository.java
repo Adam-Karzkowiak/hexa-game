@@ -10,5 +10,5 @@ public interface RegistrantRepository {
 
     List<Registrant> findAll();
 
-    Registrant delete(String id);
+    void delete(String id);
 }
