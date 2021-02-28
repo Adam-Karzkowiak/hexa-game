@@ -1,8 +1,7 @@
 package com.app.hexagame.registration.domain;
 
 
-import com.app.hexagame.registration.domain.utility.IdProvider;
-import com.app.hexagame.registration.infrastructure.entrypoint.RegistrantWriteModel;
+import com.app.hexagame.registration.domain.entrypoint.RegistrantWriteModel;
 import lombok.RequiredArgsConstructor;
 
 

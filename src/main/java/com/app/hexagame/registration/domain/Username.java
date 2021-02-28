@@ -1,7 +1,9 @@
 package com.app.hexagame.registration.domain;
 
+import lombok.Getter;
 
-class Username {
+@Getter
+public class Username {
 
     String username;
 }

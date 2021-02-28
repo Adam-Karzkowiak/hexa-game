@@ -1,6 +1,9 @@
 package com.app.hexagame.registration.domain;
 
-class Email {
+import lombok.Getter;
+
+@Getter
+public class Email {
     String email;
 
     private Email(String email) {

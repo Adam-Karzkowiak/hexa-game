@@ -4,7 +4,7 @@ import com.app.hexagame.inmemorypersistance.registration.InMemoryRegistrantRepos
 import com.app.hexagame.registration.domain.DomainPasswordEncoder;
 import com.app.hexagame.registration.domain.Registrant;
 import com.app.hexagame.registration.domain.RegistrantFacade;
-import com.app.hexagame.registration.infrastructure.entrypoint.RegistrantWriteModel;
+import com.app.hexagame.registration.domain.entrypoint.RegistrantWriteModel;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,8 +24,8 @@ class RegistrantFacadeTest {
     @Test
     @DisplayName("should save object to db")
     void test1() {
-        RegistrantWriteModel entity = new RegistrantWriteModel();
-        Registrant registrant = new Registrant()
-        facade.simpleRegistration()
+        RegistrantWriteModel registrant = new RegistrantWriteModel("adam@gmail.com", "password");
+        Registrant createRegistrant = facade.simpleRegistration(registrant);
+        inMemo.save(createRegistrant);
     }
 }
