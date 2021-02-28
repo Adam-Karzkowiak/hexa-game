@@ -1,4 +1,4 @@
-package com.app.hexagame.registration.infrastructure.entrypoint;
+package com.app.hexagame.registration.domain.entrypoint;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
