@@ -1,9 +1,6 @@
-package com.app.hexagame.inmemorypersistance.registration;
+package com.app.hexagame.registration.domain;
 
-import com.app.hexagame.registration.domain.Registrant;
-import com.app.hexagame.registration.domain.RegistrantRepository;
-import com.app.hexagame.registration.domain.Username;
-import com.app.hexagame.registration.domain.Email;
+
 import io.vavr.collection.Seq;
 import io.vavr.control.Option;
 import io.vavr.collection.HashMap;
@@ -11,7 +8,7 @@ import io.vavr.collection.Map;
 
 import java.util.*;
 
-public class InMemoryRegistrantRepository implements RegistrantRepository {
+class InMemoryRegistrantRepository implements RegistrantRepository {
     private Map<String, Registrant> runtimeRepo = HashMap.empty();
 
     @Override
