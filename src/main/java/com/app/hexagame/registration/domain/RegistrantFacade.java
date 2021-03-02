@@ -2,23 +2,27 @@ package com.app.hexagame.registration.domain;
 
 
 import com.app.hexagame.registration.domain.entrypoint.RegistrantWriteModel;
-import lombok.RequiredArgsConstructor;
 
+import static java.util.Objects.requireNonNull;
 
-@RequiredArgsConstructor
 public class RegistrantFacade {
 
-    private final RegistrantRepository repository;
-    private final DomainPasswordEncoder encoder;
+    private RegistrantRepository repository;
+    private RegistrantCreator creator;
+    private DomainPasswordEncoder encoder;
 
+    RegistrantFacade(final RegistrantRepository repository,
+                     final RegistrantCreator creator,
+                     final DomainPasswordEncoder encoder) {
+        this.repository = repository;
+        this.creator = creator;
+        this.encoder = encoder;
+    }
 
     public Registrant simpleRegistration(RegistrantWriteModel writeModel) {
-        String id = IdProvider.generateId();
-        Registrant registrantBuild = Registrant.builder()
-                .id(id)
-                .email(Email.create(writeModel.getEmail()))
-                .password(Password.encoded(writeModel.getPassword(), encoder))
-                .build();
-        return repository.save(registrantBuild);
+        requireNonNull(writeModel);
+        Registrant registrant = creator.from(writeModel,encoder);
+        return repository.save(registrant);
     }
+
 }
