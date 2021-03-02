@@ -2,17 +2,23 @@ package com.app.hexagame.registration.domain;
 
 
 import com.app.hexagame.registration.domain.entrypoint.RegistrantSimpleModel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+
 
 @Builder
 @Data
-public class Registrant {
+@AllArgsConstructor
+@NoArgsConstructor
+class Registrant {
     String id;
     Email email;
     Username username;
     Password password;
-
 
 
     public RegistrantSimpleModel toSimpleModel() {
