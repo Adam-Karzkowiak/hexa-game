@@ -1,7 +1,12 @@
 package com.app.hexagame.registration.domain;
 
 
+import com.app.hexagame.registration.domain.entrypoint.RegistrantSimpleModel;
 import com.app.hexagame.registration.domain.entrypoint.RegistrantWriteModel;
+import com.app.hexagame.registration.domain.exceptions.EmailAlreadyExistException;
+import com.app.hexagame.registration.domain.exceptions.UsernameAlreadyExistException;
+
+import java.util.Optional;
 
 import static java.util.Objects.requireNonNull;
 
@@ -19,10 +24,27 @@ public class RegistrantFacade {
         this.encoder = encoder;
     }
 
-    public Registrant simpleRegistration(RegistrantWriteModel writeModel) {
+    public String simpleRegistration(RegistrantWriteModel writeModel) {
         requireNonNull(writeModel);
-        Registrant registrant = creator.from(writeModel,encoder);
-        return repository.save(registrant);
+        Email checkEmail = Email.create(writeModel.getEmail());
+        Username checkUsername = Username.create(writeModel.getUsername());
+        if (repository.existsByEmail(checkEmail)) {
+            throw new EmailAlreadyExistException(checkEmail.getEmail());
+        }
+        if (repository.existsByUsername(checkUsername)) {
+            throw new UsernameAlreadyExistException(checkUsername.getUsername());
+        }
+        Registrant registrant = creator.from(writeModel, encoder);
+        repository.save(registrant);
+        return registrant.getId();
     }
+
+    public Optional<RegistrantSimpleModel> showRegistrant(String id) {
+        return Optional.empty();
+    }
+//docker
+//boolean existsById
+    //nawal testow
+    //logika walidatora hasla w domenie, obiekt pswd, metoda statyczna checkPass valid
 
 }

@@ -26,7 +26,6 @@ class Registrant {
                 .id(this.getId())
                 .email(email.getEmail())
                 .username(username.getUsername())
-                .password(password.getPassword())
                 .build();
     }
 }

@@ -2,7 +2,6 @@ package com.app.hexagame.registration.domain;
 
 
 import io.vavr.collection.Seq;
-import io.vavr.control.Option;
 import io.vavr.collection.HashMap;
 import io.vavr.collection.Map;
 
@@ -13,13 +12,8 @@ class InMemoryRegistrantRepository implements RegistrantRepository {
 
     @Override
     public Registrant save(final Registrant entity) {
-        runtimeRepo.put(entity.getId(), entity);
+        runtimeRepo = runtimeRepo.put(entity.getId(), entity);
         return entity;
-    }
-
-    @Override
-    public Option<Registrant> findById(String id) {
-        return runtimeRepo.get(id);
     }
 
     @Override
@@ -30,7 +24,7 @@ class InMemoryRegistrantRepository implements RegistrantRepository {
 
     @Override
     public void delete(final String id) {
-        runtimeRepo.remove(id);
+        runtimeRepo = runtimeRepo.remove(id);
     }
 
 

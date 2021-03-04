@@ -1,21 +1,32 @@
 package com.app.hexagame.registration.domain.entrypoint;
 
+import com.app.hexagame.registration.infrastructure.validation.ValidPassword;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
 
+
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-@Data
 @AllArgsConstructor
+@Builder
+@Getter
 public class RegistrantWriteModel {
 
     @NotNull
+    @Email
     private String email;
-    @Min(8)
-    @Max(30)
+
     @NotNull
+    @Min(4)
+    @Max(16)
+    private String username;
+
+    @NotNull
+    @ValidPassword
     private String password;
 
 }
