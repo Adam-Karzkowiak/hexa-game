@@ -1,15 +1,15 @@
 package com.app.hexagame.registration.domain;
 
-import io.vavr.control.Option;
 import org.springframework.data.repository.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 interface RegistrantRepository extends Repository<Registrant, String> {
 
     Registrant save(Registrant entity);
 
-    Option<Registrant> findOneById(String id);
+    Optional<Registrant> findOneById(String id);
 
     List<Registrant> findAll();
 
