@@ -1,8 +1,11 @@
 package com.app.hexagame.registration.domain;
 
 
+import lombok.Getter;
 
+@Getter
 class Password {
+
 
     String password;
 
@@ -13,4 +16,6 @@ class Password {
     public static Password encoded(String password, DomainPasswordEncoder domainEncoder) {
         return new Password(domainEncoder.encode(password));
     }
+
+    //todo metoda, ktora sprawdza haslo, wrzucic do metody encoded
 }

@@ -1,5 +1,10 @@
 package com.app.hexagame.registration.domain;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+
+@Getter
+@EqualsAndHashCode
 class Email {
     String email;
 

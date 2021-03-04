@@ -1,25 +1,50 @@
 package com.app.hexagame.registration.domain;
 
 
-import com.app.hexagame.registration.domain.utility.IdProvider;
-import com.app.hexagame.registration.infrastructure.entrypoint.RegistrantWriteModel;
-import lombok.RequiredArgsConstructor;
+import com.app.hexagame.registration.domain.entrypoint.RegistrantSimpleModel;
+import com.app.hexagame.registration.domain.entrypoint.RegistrantWriteModel;
+import com.app.hexagame.registration.domain.exceptions.EmailAlreadyExistException;
+import com.app.hexagame.registration.domain.exceptions.UsernameAlreadyExistException;
 
+import java.util.Optional;
 
-@RequiredArgsConstructor
+import static java.util.Objects.requireNonNull;
+
 public class RegistrantFacade {
 
-    private final RegistrantRepository repository;
-    private final DomainPasswordEncoder encoder;
+    private RegistrantRepository repository;
+    private RegistrantCreator creator;
+    private DomainPasswordEncoder encoder;
 
-
-    public Registrant simpleRegistration(RegistrantWriteModel writeModel) {
-        String id = IdProvider.generateId();
-        Registrant registrantBuild = Registrant.builder()
-                .id(id)
-                .email(Email.create(writeModel.getEmail()))
-                .password(Password.encoded(writeModel.getPassword(), encoder))
-                .build();
-        return repository.save(registrantBuild);
+    RegistrantFacade(final RegistrantRepository repository,
+                     final RegistrantCreator creator,
+                     final DomainPasswordEncoder encoder) {
+        this.repository = repository;
+        this.creator = creator;
+        this.encoder = encoder;
     }
+
+    public String simpleRegistration(RegistrantWriteModel writeModel) {
+        requireNonNull(writeModel);
+        Email checkEmail = Email.create(writeModel.getEmail());
+        Username checkUsername = Username.create(writeModel.getUsername());
+        if (repository.existsByEmail(checkEmail)) {
+            throw new EmailAlreadyExistException(checkEmail.getEmail());
+        }
+        if (repository.existsByUsername(checkUsername)) {
+            throw new UsernameAlreadyExistException(checkUsername.getUsername());
+        }
+        Registrant registrant = creator.from(writeModel, encoder);
+        repository.save(registrant);
+        return registrant.getId();
+    }
+
+    public Optional<RegistrantSimpleModel> showRegistrant(String id) {
+        return Optional.empty();
+    }
+//docker
+//boolean existsById
+    //nawal testow
+    //logika walidatora hasla w domenie, obiekt pswd, metoda statyczna checkPass valid
+
 }

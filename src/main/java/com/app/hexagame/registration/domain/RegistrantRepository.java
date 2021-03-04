@@ -1,8 +1,18 @@
 package com.app.hexagame.registration.domain;
 
-public interface RegistrantRepository {
+import org.springframework.data.repository.Repository;
+
+import java.util.List;
+
+interface RegistrantRepository extends Repository<Registrant, String> {
 
     Registrant save(Registrant entity);
 
-    Registrant findById(String id);
+    List<Registrant> findAll();
+
+    void delete(String id);
+
+    boolean existsByEmail(Email email);
+
+    boolean existsByUsername(Username username);
 }
