@@ -5,6 +5,7 @@ import com.app.hexagame.registration.domain.entrypoint.RegistrantSimpleModel;
 import com.app.hexagame.registration.domain.entrypoint.RegistrantWriteModel;
 import com.app.hexagame.registration.domain.exceptions.EmailAlreadyExistException;
 import com.app.hexagame.registration.domain.exceptions.UsernameAlreadyExistException;
+import io.vavr.control.Option;
 
 import java.util.Optional;
 
@@ -40,7 +41,9 @@ public class RegistrantFacade {
     }
 
     public Optional<RegistrantSimpleModel> showRegistrant(String id) {
-        return Optional.empty();
+        Option<Registrant> registrant = repository.findOneById(id);
+        RegistrantSimpleModel simpleModel = registrant.get().toSimpleModel();
+        return Optional.of(simpleModel);
     }
 //docker
 //boolean existsById
