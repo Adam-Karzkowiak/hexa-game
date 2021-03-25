@@ -23,7 +23,7 @@ class Password {
 
     private static boolean passwordValidation(String password) {
         if (password.length() > 30 || password.length() < 8) {
-            return false;
+            throw new IllegalArgumentException("Password length should be x<30, x>8");
         }
         String upperCaseChars = "(.*[A-Z].*)";
         if (!password.matches(upperCaseChars)) {
