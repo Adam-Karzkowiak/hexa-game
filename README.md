@@ -1,12 +1,19 @@
 # hexa-game
 ## Table of contents
 * [General info](#general-info)
+* [Status](#status)
 * [Technologies](#technologies)
 * [Setup](#setup)
 
 ## General info
-A simplified version of the browser game Ogame. The project is made in hexagonal architecture.
+A simplified version of the browser game Ogame. The project is made in hexagonal architecture.\
+
 	
+## Status
+Created service to connect to openweather API: [openweather-java](https://github.com/Adam-Karzkowiak/openweather-java)\
+The wind speed from Wellington, NZ will affect the power generation of the game's wind farms.\
+Plan for the near future: add unit tests to the registration facade.
+
 ## Technologies
 Project is created with:
 * Java v 11
