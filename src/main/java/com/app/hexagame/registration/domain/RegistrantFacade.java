@@ -45,9 +45,5 @@ public class RegistrantFacade {
         RegistrantSimpleModel simpleModel = registrant.get().toSimpleModel();
         return Optional.of(simpleModel);
     }
-//docker
-//boolean existsById
-    //nawal testow
-    //logika walidatora hasla w domenie, obiekt pswd, metoda statyczna checkPass valid
 
 }
